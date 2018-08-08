@@ -1,0 +1,1 @@
+echo 127.0.0.1   localhost > C:\WINDOWS\system32\drivers\etc\hosts
