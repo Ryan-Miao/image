@@ -24,17 +24,36 @@ npm install http-server -g
 http-server . -p 80
 ```
 
-创建一个设置域名代理的hosts set-proxy-hosts.bat
+创建一个设置域名代理的hosts.bat
 ```
-echo 127.0.0.1   img.rmiao.top > C:\WINDOWS\system32\drivers\etc\hosts
+@echo off
+echo "please allow"
+@echo  ########################################
+@xcopy C:\Windows\system32\drivers\etc\hosts C:\Windows\system32\drivers\etc\hosts.bak\ /d /c /i /y
+@echo  ########################################
+@echo  hosts backup finished!
+@echo
+@echo 127.0.0.1   img.rmiao.top >>C:\Windows\System32\drivers\etc\hosts
+
+echo   "add img.rmiao.top done"
+@ipconfig /flushdns
+@echo   "flush dns done"
+ 
+echo  input any character to revert hosts
+@echo
+@echo  ########################################
+@pause > nul
+@copy C:\Windows\System32\drivers\etc\hosts.bak\hosts C:\Windows\System32\drivers\etc\hosts /y
+@echo
+@echo off
+echo  hosts reverted
+@echo
+@pause > nul
+@exit
 
 ```
 
-创建一个revert-hosts.bat
-
-```
-echo 127.0.0.1   localhost > C:\WINDOWS\system32\drivers\etc\hosts
-```
 
 
-双击local-server-start.bat启动， 然后管理员运行set-proxy-hosts.bat即可。此时，所有应该访问coding page的请求都被拦截到本地。等博客编写结束后，可以停止服务，管理员运行revert-hosts.bat还原hosts。
+
+双击local-server-start.bat启动， 然后管理员运行 hosts.bat即可。此时，所有应该访问coding page的请求都被拦截到本地。等博客编写结束后，可以停止服务，管理员运行revert-hosts.bat还原hosts。
