@@ -56,4 +56,5 @@ echo  hosts reverted
 
 
 
-双击local-server-start.bat启动， 然后管理员运行 hosts.bat即可。此时，所有应该访问coding page的请求都被拦截到本地。等博客编写结束后，可以停止服务，管理员运行revert-hosts.bat还原hosts。
+双击local-server-start.bat启动， 然后管理员运行 hosts.bat即可。此时，所有应该访问coding page的请求都被拦截到本地。
+等博客编写结束后，可以停止服务，在hosts的cmd窗口按任意键还原hosts。
